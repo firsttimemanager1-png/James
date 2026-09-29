@@ -171,6 +171,75 @@ def lake_page(l):
 </html>
 '''
 
+PHOTOS = [
+ dict(file="tiger-trout-net", caption="Tiger trout in the net",
+      alt="Smiling angler in a bucket hat holding a landing net with a striped tiger trout, calm lake and forested hills behind"),
+ dict(file="tiger-trout-hand", caption="Tiger trout up close",
+      alt="Hand holding a tiger trout with green and gold tiger stripes above the water"),
+ dict(file="tiger-trout-lure", caption="Tiger trout on the lure",
+      alt="Tiger trout hanging from a fishing line with a lure in its mouth inside an aluminum fishing boat"),
+ dict(file="rainbow-trout", caption="Rainbow trout",
+      alt="Angler in a camouflage jacket holding a rainbow trout on a boat with fishing rods and mountains in the background"),
+]
+
+def photos_page():
+    url = BASE + "photos.html"
+    title = "Photos: Guided Fishing Trips in Southern Utah | Henrie Outfitters"
+    desc = "Photos from guided fishing trips with Henrie Outfitters in Southern Utah: tiger trout, rainbow trout and days on the water."
+    items = "".join(
+        f'<figure><a href="assets/photos/{p["file"]}.jpg"><img src="assets/photos/{p["file"]}-sm.jpg" alt="{E(p["alt"])}" width="640" height="850" loading="lazy"></a><figcaption>{E(p["caption"])}</figcaption></figure>'
+        for p in PHOTOS)
+    dd_items = "".join(f'<a href="lakes/{o["slug"]}.html">{E(o["name"])}</a>' for o in LAKES)
+    graph = [
+      {"@context": "https://schema.org", "@type": "ImageGallery", "name": "Guided fishing trip photos", "url": url,
+       "about": "Guided fishing trips in Southern Utah with Henrie Outfitters",
+       "image": [{"@type": "ImageObject", "contentUrl": f"{BASE}assets/photos/{p['file']}.jpg", "caption": p["caption"], "description": p["alt"]} for p in PHOTOS]},
+      {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Henrie Outfitters", "item": BASE},
+        {"@type": "ListItem", "position": 2, "name": "Photos", "item": url}]},
+    ]
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{E(title)}</title>
+<meta name="description" content="{E(desc)}">
+<link rel="canonical" href="{url}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Henrie Outfitters">
+<meta property="og:title" content="{E(title)}">
+<meta property="og:description" content="{E(desc)}">
+<meta property="og:url" content="{url}">
+<meta property="og:image" content="{BASE}assets/photos/{PHOTOS[0]["file"]}.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/lake.css">
+{"".join(jl(g) for g in graph)}
+</head>
+<body>
+<header class="nav"><a class="brand" href="./"><img src="assets/logo.png" alt="Henrie Outfitters LLC logo" width="44" height="44">Henrie Outfitters</a>
+<nav><div class="dd"><a class="ddlink" href="./#lakes">Lakes</a><button class="ddbtn" type="button" aria-label="Show all lakes" aria-expanded="false">&#9662;</button><div class="ddmenu"><a href="./#lakes">All lakes</a>{dd_items}</div></div><a href="tel:{PHONE_TEL}">Call {PHONE_DISPLAY}</a><a class="book" href="./#contact">Book now &rarr;</a></nav></header>
+<main>
+<section class="hero"><div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="./">Home</a> / <span>Photos</span></nav>
+<p class="kicker">On the water</p>
+<h1>Photos from the boat</h1>
+<p class="sub">Tiger trout, rainbow trout and days on the water in Southern Utah.</p>
+<a class="btn" href="./#contact"><span>Book a guided trip</span><i>&rarr;</i></a>
+</div></section>
+<section><div class="wrap"><div class="photogrid">{items}</div></div></section>
+</main>
+<footer><div class="wrap"><p><strong>Henrie Outfitters LLC</strong> &middot; Guided fishing and hunting in Southern Utah with James Henrie</p>
+<p><a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a> &middot; <a href="mailto:{EMAIL}">{EMAIL}</a> &middot; <a href="{INSTAGRAM}">Instagram</a></p></div></footer>
+<script>document.querySelector(".ddbtn").addEventListener("click",function(){{var d=this.parentNode,o=d.classList.toggle("open");this.setAttribute("aria-expanded",o)}});document.addEventListener("click",function(e){{var d=document.querySelector(".dd");if(d&&!d.contains(e.target)){{d.classList.remove("open")}}}});</script>
+</body>
+</html>
+'''
+
 def dd_index():
     items = "".join(f'<a href="lakes/{l["slug"]}.html">{E(l["name"])}</a>' for l in LAKES)
     return ('<div class="dd"><a class="ddlink" href="#lakes">Lakes</a>'
@@ -202,7 +271,7 @@ def main():
     out = ROOT / "lakes"; out.mkdir(exist_ok=True)
     for l in LAKES:
         (out / f"{l['slug']}.html").write_text(lake_page(l), encoding="utf-8")
-    urls = [BASE] + [f"{BASE}lakes/{l['slug']}.html" for l in LAKES]
+    urls = [BASE, BASE + "photos.html"] + [f"{BASE}lakes/{l['slug']}.html" for l in LAKES]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
          "".join(f"  <url><loc>{u}</loc><lastmod>{TODAY}</lastmod></url>\n" for u in urls) + "</urlset>\n"
     (ROOT / "sitemap.xml").write_text(sm)
@@ -214,8 +283,9 @@ def main():
       "## Guided fishing trips by lake", ""]
     for l in LAKES:
         lines.append(f"- [{l['name']}]({BASE}lakes/{l['slug']}.html): {l['tagline']}, {l['angle'].lower()}. {l['hook']}")
-    lines += ["", "## Main site", "", f"- [Henrie Outfitters home]({BASE}): trips, lakes, guide, booking", f"- [Instagram]({INSTAGRAM})", ""]
+    lines += ["", "## Main site", "", f"- [Henrie Outfitters home]({BASE}): trips, lakes, guide, booking", f"- [Photos]({BASE}photos.html): photos from guided fishing trips", f"- [Instagram]({INSTAGRAM})", ""]
     (ROOT / "llms.txt").write_text("\n".join(lines))
+    (ROOT / "photos.html").write_text(photos_page(), encoding="utf-8")
     patch_index()
     print("built", len(LAKES), "lake pages")
 

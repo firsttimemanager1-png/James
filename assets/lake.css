@@ -54,3 +54,7 @@ footer a{color:#fff}
 .nav nav .ddmenu a:last-child{border-bottom:0}
 .nav nav .ddmenu a[aria-current]{background:var(--cream)}
 @media(max-width:820px){.nav nav .dd{display:flex}.nav nav .dd .ddlink{display:flex}.ddmenu{position:fixed;top:62px;left:0;right:0}}
+.photogrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;align-items:start}
+.photogrid figure{margin:0;border:1px solid var(--black);background:#fff}
+.photogrid img{display:block;width:100%;height:auto}
+.photogrid figcaption{font-family:var(--label);font-weight:600;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--black);padding:12px 14px;border-top:1px solid var(--black)}
