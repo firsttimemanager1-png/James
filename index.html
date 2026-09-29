@@ -125,7 +125,11 @@ header.nav{position:sticky;top:0;z-index:80;background:var(--offwhite);border-bo
 .lakeitem{flex:0 0 min(380px,82%);scroll-snap-align:start;display:flex;flex-direction:column;padding:24px 22px 26px;background:#fff;border:1px solid var(--black)}
 .lakeitem .num{display:block;margin-bottom:14px}
 .lakeitem .num{font-family:var(--cond);font-weight:600;font-size:1.6rem;color:var(--muted);line-height:1}
-.lakeitem h3 a:hover{text-decoration:underline}
+.lakeitem h3 a{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px;text-decoration-color:var(--olive)}
+.lakeitem h3 a::after{content:" \2192";font-family:var(--label);font-size:.6em;vertical-align:.15em}
+.lakeitem h3 a:hover{background:var(--cream)}
+.lakeitem .more{display:inline-block;margin-bottom:18px;font-family:var(--label);font-weight:600;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--black);border-bottom:1px solid var(--black);padding-bottom:3px;align-self:flex-start}
+.lakeitem .more:hover{color:var(--olive);border-color:var(--olive)}
 .lakeitem h3{font-size:clamp(1.9rem,3vw,2.5rem);margin-bottom:10px}
 .lakeitem p{margin-bottom:14px;max-width:46ch}
 .fish{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
@@ -296,31 +300,31 @@ footer a:hover{color:#fff}
   <div class="lakelist" id="lakelist" tabindex="0" aria-label="Optional places to fish">
     <article class="lakeitem reveal">
       <span class="num">01</span>
-      <div><h3><a href="lakes/sand-hollow-reservoir.html">Sand Hollow Reservoir</a></h3><p>Probably the one I&rsquo;d look at first for bass. Largemouth bass and bluegill, with good boat and shore access.</p><ul class="fish"><li>Largemouth bass</li><li>Bluegill</li></ul><a class="btn" href="#contact" data-lake="Sand Hollow Reservoir"><span>Book a trip here</span><i>&rarr;</i></a></div>
+      <div><h3><a href="lakes/sand-hollow-reservoir.html">Sand Hollow Reservoir</a></h3><p>Probably the one I&rsquo;d look at first for bass. Largemouth bass and bluegill, with good boat and shore access.</p><ul class="fish"><li>Largemouth bass</li><li>Bluegill</li></ul><a class="more" href="lakes/sand-hollow-reservoir.html">Lake details &rarr;</a><a class="btn" href="#contact" data-lake="Sand Hollow Reservoir"><span>Book a trip here</span><i>&rarr;</i></a></div>
     </article>
     <article class="lakeitem reveal">
       <span class="num">02</span>
-      <div><h3><a href="lakes/lake-powell.html">Lake Powell</a></h3><p>By far the biggest variety: striped bass, smallmouth and largemouth bass, walleye, crappie, catfish and bluegill. It&rsquo;s especially good if you have a boat.</p><ul class="fish"><li>Striped bass</li><li>Smallmouth bass</li><li>Largemouth bass</li><li>Walleye</li><li>Crappie</li><li>Catfish</li><li>Bluegill</li></ul><a class="btn" href="#contact" data-lake="Lake Powell"><span>Book a trip here</span><i>&rarr;</i></a></div>
+      <div><h3><a href="lakes/lake-powell.html">Lake Powell</a></h3><p>By far the biggest variety: striped bass, smallmouth and largemouth bass, walleye, crappie, catfish and bluegill. It&rsquo;s especially good if you have a boat.</p><ul class="fish"><li>Striped bass</li><li>Smallmouth bass</li><li>Largemouth bass</li><li>Walleye</li><li>Crappie</li><li>Catfish</li><li>Bluegill</li></ul><a class="more" href="lakes/lake-powell.html">Lake details &rarr;</a><a class="btn" href="#contact" data-lake="Lake Powell"><span>Book a trip here</span><i>&rarr;</i></a></div>
     </article>
     <article class="lakeitem reveal">
       <span class="num">03</span>
-      <div><h3><a href="lakes/navajo-lake.html">Navajo Lake</a></h3><p>Excellent mountain trout lake. Rainbow and brook trout, with a much cooler, forested setting than the St. George area.</p><ul class="fish"><li>Rainbow trout</li><li>Brook trout</li></ul><a class="btn" href="#contact" data-lake="Navajo Lake"><span>Book a trip here</span><i>&rarr;</i></a></div>
+      <div><h3><a href="lakes/navajo-lake.html">Navajo Lake</a></h3><p>Excellent mountain trout lake. Rainbow and brook trout, with a much cooler, forested setting than the St. George area.</p><ul class="fish"><li>Rainbow trout</li><li>Brook trout</li></ul><a class="more" href="lakes/navajo-lake.html">Lake details &rarr;</a><a class="btn" href="#contact" data-lake="Navajo Lake"><span>Book a trip here</span><i>&rarr;</i></a></div>
     </article>
     <article class="lakeitem reveal">
       <span class="num">04</span>
-      <div><h3><a href="lakes/panguitch-lake.html">Panguitch Lake</a></h3><p>One of the better trout destinations in Southern Utah, with rainbow and cutthroat trout and good boat access.</p><ul class="fish"><li>Rainbow trout</li><li>Cutthroat trout</li></ul><a class="btn" href="#contact" data-lake="Panguitch Lake"><span>Book a trip here</span><i>&rarr;</i></a></div>
+      <div><h3><a href="lakes/panguitch-lake.html">Panguitch Lake</a></h3><p>One of the better trout destinations in Southern Utah, with rainbow and cutthroat trout and good boat access.</p><ul class="fish"><li>Rainbow trout</li><li>Cutthroat trout</li></ul><a class="more" href="lakes/panguitch-lake.html">Lake details &rarr;</a><a class="btn" href="#contact" data-lake="Panguitch Lake"><span>Book a trip here</span><i>&rarr;</i></a></div>
     </article>
     <article class="lakeitem reveal">
       <span class="num">05</span>
-      <div><h3><a href="lakes/gunlock-reservoir.html">Gunlock Reservoir</a></h3><p>Smaller warm water lake near St. George with largemouth bass, crappie and catfish.</p><ul class="fish"><li>Largemouth bass</li><li>Crappie</li><li>Catfish</li></ul><a class="btn" href="#contact" data-lake="Gunlock Reservoir"><span>Book a trip here</span><i>&rarr;</i></a></div>
+      <div><h3><a href="lakes/gunlock-reservoir.html">Gunlock Reservoir</a></h3><p>Smaller warm water lake near St. George with largemouth bass, crappie and catfish.</p><ul class="fish"><li>Largemouth bass</li><li>Crappie</li><li>Catfish</li></ul><a class="more" href="lakes/gunlock-reservoir.html">Lake details &rarr;</a><a class="btn" href="#contact" data-lake="Gunlock Reservoir"><span>Book a trip here</span><i>&rarr;</i></a></div>
     </article>
     <article class="lakeitem reveal">
       <span class="num">06</span>
-      <div><h3><a href="lakes/quail-creek-reservoir.html">Quail Creek Reservoir</a></h3><p>Very good option near St. George for largemouth bass, crappie, bluegill and rainbow trout. It has good facilities and boat ramps.</p><ul class="fish"><li>Largemouth bass</li><li>Crappie</li><li>Bluegill</li><li>Rainbow trout</li></ul><a class="btn" href="#contact" data-lake="Quail Creek Reservoir"><span>Book a trip here</span><i>&rarr;</i></a></div>
+      <div><h3><a href="lakes/quail-creek-reservoir.html">Quail Creek Reservoir</a></h3><p>Very good option near St. George for largemouth bass, crappie, bluegill and rainbow trout. It has good facilities and boat ramps.</p><ul class="fish"><li>Largemouth bass</li><li>Crappie</li><li>Bluegill</li><li>Rainbow trout</li></ul><a class="more" href="lakes/quail-creek-reservoir.html">Lake details &rarr;</a><a class="btn" href="#contact" data-lake="Quail Creek Reservoir"><span>Book a trip here</span><i>&rarr;</i></a></div>
     </article>
     <article class="lakeitem reveal">
       <span class="num">07</span>
-      <div><h3><a href="lakes/fish-lake.html">Fish Lake</a></h3><p>If you&rsquo;re willing to drive farther north, this is a serious trout destination with lake trout, splake, rainbow, cutthroat and other trout.</p><ul class="fish"><li>Lake trout</li><li>Splake</li><li>Rainbow trout</li><li>Cutthroat trout</li></ul><a class="btn" href="#contact" data-lake="Fish Lake"><span>Book a trip here</span><i>&rarr;</i></a></div>
+      <div><h3><a href="lakes/fish-lake.html">Fish Lake</a></h3><p>If you&rsquo;re willing to drive farther north, this is a serious trout destination with lake trout, splake, rainbow, cutthroat and other trout.</p><ul class="fish"><li>Lake trout</li><li>Splake</li><li>Rainbow trout</li><li>Cutthroat trout</li></ul><a class="more" href="lakes/fish-lake.html">Lake details &rarr;</a><a class="btn" href="#contact" data-lake="Fish Lake"><span>Book a trip here</span><i>&rarr;</i></a></div>
     </article>
   </div>
   <p class="reveal"><a class="btn" href="#contact"><span>Ask about another lake</span><i>&rarr;</i></a></p>
