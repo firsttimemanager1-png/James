@@ -180,6 +180,14 @@ PHOTOS = [
       alt="Tiger trout hanging from a fishing line with a lure in its mouth inside an aluminum fishing boat"),
  dict(file="rainbow-trout", caption="Rainbow trout",
       alt="Angler in a camouflage jacket holding a rainbow trout on a boat with fishing rods and mountains in the background"),
+ dict(file="rainbow-trout-closeup", caption="Rainbow trout up close",
+      alt="Close view of a rainbow trout with black spots and a pink stripe held over the water beside an aluminum fishing boat"),
+ dict(file="tiger-trout-guest", caption="Tiger trout catch",
+      alt="Bearded angler in a camouflage jacket holding a tiger trout on a boat under a cloudy sky with forested hills behind"),
+ dict(file="tiger-trout-boat", caption="Tiger trout on deck",
+      alt="Hand holding a striped tiger trout in an aluminum fishing boat with a forested shoreline and blue sky behind"),
+ dict(file="tiger-trout-hooked", caption="Tiger trout, just landed",
+      alt="Tiger trout hanging from a crankbait lure over a boat with calm water and forested hills in the background"),
 ]
 
 def photos_page():
