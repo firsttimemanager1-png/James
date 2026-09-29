@@ -14,37 +14,55 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 LAKES = [
  dict(slug="sand-hollow-reservoir", name="Sand Hollow Reservoir", where="near St. George, Southern Utah",
-      species=["Largemouth bass", "Bluegill"],
-      blurb="A top pick for bass fishing in Southern Utah. Sand Hollow Reservoir holds largemouth bass and bluegill and has good boat and shore access.",
-      access="Good boat and shore access."),
+      angle="Desert bass hunting", tagline="Red Rock Bass Factory",
+      hook="Chase largemouth bass in crystal blue water surrounded by Southern Utah red rock.",
+      experience=["This is desert bass fishing with a completely different backdrop. You are casting for largemouth along red sandstone cliffs, sandy shorelines, flooded structure and clear blue water. It is the kind of place where you can spend the morning working shallow cover and then chase bass around deeper structure as the sun climbs."],
+      why="Year round bass fishing, dramatic scenery, and the chance to catch numbers of largemouth while still having a legitimate shot at a big fish.",
+      species=["Largemouth bass", "Bluegill"], access="Good boat and shore access."),
  dict(slug="lake-powell", name="Lake Powell", where="Southern Utah",
-      species=["Striped bass", "Smallmouth bass", "Largemouth bass", "Walleye", "Crappie", "Catfish", "Bluegill"],
-      blurb="Lake Powell offers by far the biggest variety of fish in Southern Utah: striped bass, smallmouth and largemouth bass, walleye, crappie, catfish and bluegill. It is especially good if you have a boat.",
-      access="Best fished by boat."),
+      angle="Canyon striper adventure", tagline="Striper Canyon",
+      hook="Run the canyons, find the bait and watch the stripers explode on the surface.",
+      experience=["Lake Powell feels less like fishing a lake and more like fishing an enormous canyon system. You run through narrow sandstone canyons, stop where bait is holding and cast for striped bass. When the stripers are schooling, the action can become frantic, with fish chasing bait right to the surface."],
+      why="Massive water, endless canyon structure and the possibility of catching striped bass by the dozens when you find an active school.",
+      species=["Striped bass", "Smallmouth bass", "Largemouth bass", "Walleye", "Crappie", "Catfish", "Bluegill"], access="Best fished by boat."),
  dict(slug="navajo-lake", name="Navajo Lake", where="Southern Utah",
-      species=["Rainbow trout", "Brook trout"],
-      blurb="Navajo Lake is an excellent mountain trout lake with rainbow and brook trout, in a much cooler, forested setting than the St. George area.",
-      access="Cool, forested mountain setting."),
+      angle="High alpine trout escape", tagline="Lava Tube Trout Lake",
+      hook="High alpine trout fishing on a lake where the water disappears underground.",
+      experience=["Navajo is almost the opposite of Lake Powell. You are fishing at more than 9,000 feet, surrounded by spruce and pine rather than desert cliffs. The water is cold, quiet and surprisingly deep in places despite the lake\u2019s relatively small size. It feels like a remote mountain trout expedition."],
+      why="Brook trout, rainbow trout and a completely different high-country fishing experience. The surrounding forest and elevation make the trip feel more like Colorado or Montana than Southern Utah.",
+      species=["Rainbow trout", "Brook trout"], access="Cool, forested mountain setting."),
  dict(slug="panguitch-lake", name="Panguitch Lake", where="Southern Utah",
-      species=["Rainbow trout", "Cutthroat trout"],
-      blurb="Panguitch Lake is one of the better trout destinations in Southern Utah, with rainbow and cutthroat trout and good boat access. It is home water for Henrie Outfitters.",
-      access="Good boat access.",
+      angle="Trophy trout hunting", tagline="Big Fish Reboot",
+      hook="Fish the lake named \u2018Big Fish\u2019 for Southern Utah\u2019s trophy trout.",
+      experience=["Panguitch is built around one thing: trout. You can troll open water for cruising fish, work shorelines and structure, or target tiger trout and cutthroat with more aggressive presentations. The lake\u2019s high elevation and open basin make changing weather and conditions part of the experience."],
+      why="This is where you go when the goal is not simply catching trout but looking for a genuinely large Southern Utah trout.",
+      species=["Rainbow trout", "Cutthroat trout", "Tiger trout"], access="Good boat access.",
       details=["Full 8 hour guided fishing trip", "All fishing gear and equipment provided", "Lunch provided",
                "Customized start and end times to fit your schedule", "Expert instruction and local knowledge",
                "Perfect for beginners, families and experienced anglers"]),
  dict(slug="gunlock-reservoir", name="Gunlock Reservoir", where="near St. George, Southern Utah",
-      species=["Largemouth bass", "Crappie", "Catfish"],
-      blurb="Gunlock Reservoir is a smaller warm water lake near St. George with largemouth bass, crappie and catfish.",
-      access="Smaller warm water lake."),
+      angle="Intimate red rock bass fishing", tagline="Comeback Waterfall Bass",
+      hook="Fish a red rock bass lake that came back from the brink.",
+      experience=["Gunlock feels more intimate than Sand Hollow or Powell. You are fishing a smaller red rock reservoir where finding the right shoreline, point or piece of cover can make all the difference. It is a good lake for slowing down and actually learning where the bass are holding.",
+                  "And when conditions are right, the fishing trip comes with something you cannot manufacture: Gunlock Falls spilling over the dam."],
+      why="Smaller water, less overwhelming than Powell, beautiful red rock scenery and a bass fishery with an unusual comeback story.",
+      species=["Largemouth bass", "Crappie", "Catfish"], access="Smaller warm water lake."),
  dict(slug="quail-creek-reservoir", name="Quail Creek Reservoir", where="near St. George, Southern Utah",
-      species=["Largemouth bass", "Crappie", "Bluegill", "Rainbow trout"],
-      blurb="Quail Creek Reservoir is a very good option near St. George for largemouth bass, crappie, bluegill and rainbow trout. It has good facilities and boat ramps.",
-      access="Good facilities and boat ramps."),
+      angle="Clear water trophy bass", tagline="Record Factory",
+      hook="A desert reservoir where stocked trout help grow trophy bass.",
+      experience=["Quail Creek is one of those lakes that can surprise you. It does not look like a trophy fishery from the shore, but beneath the clear water is an unusual combination of warm water bass habitat and stocked trout. Largemouth can key on trout, creating opportunities to target bigger bass around deeper water and structure."],
+      why="Clear water, big largemouth, aggressive smallmouth-style sight fishing opportunities and the unusual possibility of catching trout and bass in the same day.",
+      species=["Largemouth bass", "Crappie", "Bluegill", "Rainbow trout"], access="Good facilities and boat ramps."),
  dict(slug="fish-lake", name="Fish Lake", where="farther north in Utah",
-      species=["Lake trout", "Splake", "Rainbow trout", "Cutthroat trout", "Other trout"],
-      blurb="Fish Lake is a serious trout destination for anglers willing to drive farther north, with lake trout, splake, rainbow, cutthroat and other trout.",
-      access="Worth the longer drive."),
+      angle="Deep water Mackinaw hunting", tagline="Alpine Mackinaw Lake",
+      hook="Go deep for a trophy Mackinaw in the heart of Utah\u2019s high country.",
+      experience=["Fish Lake is not a numbers game in the same way as some of the Southern Utah bass lakes. This is about hunting. You are working deep water for lake trout, watching electronics, finding the right depth and putting a bait or lure in front of a fish that can weigh tens of pounds.",
+                  "In summer, the high-elevation setting makes the boat trip itself part of the experience. In winter, the entire lake transforms into an ice fishing destination."],
+      why="Trophy lake trout, high alpine scenery and the feeling that every deep-water mark on the electronics could be the fish you came for.",
+      species=["Lake trout", "Splake", "Rainbow trout", "Cutthroat trout", "Other trout"], access="Worth the longer drive."),
 ]
+for _l in LAKES:
+    _l["blurb"] = _l["hook"]
 
 E = html.escape
 def jl(obj):  # JSON-LD script tag
@@ -74,19 +92,20 @@ def sp_short(l):
 def lake_page(l):
     # Optional per-lake facts. Add keys to a lake in LAKES to show them:
     #   details = ["Best months: ...", "Boat ramp: ...", "Typical catch: ..."]
+    exp_html = "".join(f"<p>{E(p)}</p>" for p in l["experience"])
     details_html = ""
     if l.get("details"):
         details_html = "<h3>Good to know</h3><ul class=\"know\">" + "".join(f"<li>{E(d)}</li>" for d in l["details"]) + "</ul>"
     url = f"{BASE}lakes/{l['slug']}.html"
     title = f"Guided Fishing Trips at {l['name']}, Utah | Henrie Outfitters"
-    desc = f"Book a guided fishing trip at {l['name']} ({l['where']}) with Henrie Outfitters. Target {', '.join(s.lower() for s in l['species'][:4])}. Call {PHONE_DISPLAY}."
+    desc = f"{l['hook']} Guided fishing trips at {l['name']} with Henrie Outfitters. Call {PHONE_DISPLAY}."
     qa = faq(l)
     others = "".join(f'<li><a href="{o["slug"]}.html">{E(o["name"])}</a></li>' for o in LAKES if o["slug"] != l["slug"])
     fish = "".join(f"<li>{E(s)}</li>" for s in l["species"])
     faq_html = "".join(f"<details open><summary>{E(q)}</summary><p>{E(a)}</p></details>" for q, a in qa)
     graph = [
       {"@context": "https://schema.org", "@type": "Service", "name": f"Guided fishing trips at {l['name']}",
-       "serviceType": "Guided fishing trip", "description": l["blurb"], "url": url,
+       "serviceType": "Guided fishing trip", "description": f"{l['tagline']}. {l['hook']} {l['experience'][0]}", "url": url,
        "areaServed": {"@type": "Place", "name": f"{l['name']}, Utah"},
        "provider": {**BUSINESS, "founder": {"@type": "Person", "name": "James Henrie"}}},
       {"@context": "https://schema.org", "@type": "FAQPage",
@@ -125,14 +144,15 @@ def lake_page(l):
 <main>
 <section class="hero{' photo' if l['slug']=='panguitch-lake' else ''}"><div class="wrap">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Home</a> / <a href="../#lakes">Fishing lakes</a> / <span>{E(l["name"])}</span></nav>
-<p class="kicker">{E(l["where"])}</p>
+<p class="kicker">{E(l["angle"])} &middot; {E(l["where"])}</p>
 <h1>Guided fishing trips at {E(l["name"])}</h1>
-<p class="sub">Guided fishing for {E(sp_short(l))} in {E(l["where"])}.</p>
+<p class="sub">{E(l["hook"])}</p>
 <a class="btn" href="{book}"><span>Book a trip at {E(l["name"])}</span><i>&rarr;</i></a>
 </div></section>
 <section><div class="wrap two">
-<div><h2>Fishing at {E(l["name"])}</h2>
-<p>{E(l["blurb"])}</p>
+<div><p class="eyebrow">The experience</p><h2>{E(l["tagline"])}</h2>
+{exp_html}
+<h3>Why fish {E(l["name"])}</h3><p>{E(l["why"])}</p>
 {details_html}
 <p class="guide">Guided by James Henrie, owner of Henrie Outfitters LLC. Call <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a> or email <a href="mailto:{EMAIL}">{EMAIL}</a> to plan a trip.</p></div>
 <div><h2>What you can catch</h2><ul class="fish">{fish}</ul>
@@ -147,6 +167,26 @@ def lake_page(l):
 </body>
 </html>
 '''
+
+def cards_html():
+    out = []
+    for n, l in enumerate(LAKES, 1):
+        tags = "".join(f"<li>{E(s)}</li>" for s in l["species"])
+        out.append(f'''    <article class="lakeitem reveal">
+      <span class="num">{n:02d}</span>
+      <div><span class="angle">{E(l["angle"])}</span><h3><a href="lakes/{l["slug"]}.html">{E(l["name"])}</a></h3><p class="hook">{E(l["hook"])}</p><ul class="fish">{tags}</ul><a class="more" href="lakes/{l["slug"]}.html">Lake details &rarr;</a><a class="btn" href="#contact" data-lake="{E(l["name"])}"><span>Book a trip here</span><i>&rarr;</i></a></div>
+    </article>
+''')
+    return "".join(out)
+
+def patch_index():
+    p = ROOT / "index.html"
+    s = p.read_text(encoding="utf-8")
+    a, z = "<!-- LAKES:START -->", "<!-- LAKES:END -->"
+    if a in s:
+        head, rest = s.split(a, 1); _, tail = rest.split(z, 1)
+        s = head + a + "\n" + cards_html() + "  " + z + tail
+        p.write_text(s, encoding="utf-8")
 
 def main():
     out = ROOT / "lakes"; out.mkdir(exist_ok=True)
@@ -163,9 +203,10 @@ def main():
       f"Book: call or text {PHONE_DISPLAY}, email {EMAIL}, or use the form at {BASE}#contact. Customized trip packages are available.", "",
       "## Guided fishing trips by lake", ""]
     for l in LAKES:
-        lines.append(f"- [{l['name']}]({BASE}lakes/{l['slug']}.html): {l['blurb']}")
+        lines.append(f"- [{l['name']}]({BASE}lakes/{l['slug']}.html): {l['tagline']}, {l['angle'].lower()}. {l['hook']}")
     lines += ["", "## Main site", "", f"- [Henrie Outfitters home]({BASE}): trips, lakes, guide, booking", f"- [Instagram]({INSTAGRAM})", ""]
     (ROOT / "llms.txt").write_text("\n".join(lines))
+    patch_index()
     print("built", len(LAKES), "lake pages")
 
 if __name__ == "__main__":
