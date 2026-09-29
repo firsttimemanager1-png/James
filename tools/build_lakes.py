@@ -28,7 +28,10 @@ LAKES = [
  dict(slug="panguitch-lake", name="Panguitch Lake", where="Southern Utah",
       species=["Rainbow trout", "Cutthroat trout"],
       blurb="Panguitch Lake is one of the better trout destinations in Southern Utah, with rainbow and cutthroat trout and good boat access. It is home water for Henrie Outfitters.",
-      access="Good boat access."),
+      access="Good boat access.",
+      details=["Full 8 hour guided fishing trip", "All fishing gear and equipment provided", "Lunch provided",
+               "Customized start and end times to fit your schedule", "Expert instruction and local knowledge",
+               "Perfect for beginners, families and experienced anglers"]),
  dict(slug="gunlock-reservoir", name="Gunlock Reservoir", where="near St. George, Southern Utah",
       species=["Largemouth bass", "Crappie", "Catfish"],
       blurb="Gunlock Reservoir is a smaller warm water lake near St. George with largemouth bass, crappie and catfish.",
@@ -64,7 +67,16 @@ def faq(l):
             "A full 8 hour guided fishing trip, all fishing gear and equipment, lunch, customized start and end times to fit your schedule, and expert instruction and local knowledge."))
     return qa
 
+def sp_short(l):
+    s = [x.lower() for x in l["species"][:3]]
+    return ", ".join(s[:-1]) + " and " + s[-1] if len(s) > 1 else s[0]
+
 def lake_page(l):
+    # Optional per-lake facts. Add keys to a lake in LAKES to show them:
+    #   details = ["Best months: ...", "Boat ramp: ...", "Typical catch: ..."]
+    details_html = ""
+    if l.get("details"):
+        details_html = "<h3>Good to know</h3><ul class=\"know\">" + "".join(f"<li>{E(d)}</li>" for d in l["details"]) + "</ul>"
     url = f"{BASE}lakes/{l['slug']}.html"
     title = f"Guided Fishing Trips at {l['name']}, Utah | Henrie Outfitters"
     desc = f"Book a guided fishing trip at {l['name']} ({l['where']}) with Henrie Outfitters. Target {', '.join(s.lower() for s in l['species'][:4])}. Call {PHONE_DISPLAY}."
@@ -115,14 +127,14 @@ def lake_page(l):
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Home</a> / <a href="../#lakes">Fishing lakes</a> / <span>{E(l["name"])}</span></nav>
 <p class="kicker">{E(l["where"])}</p>
 <h1>Guided fishing trips at {E(l["name"])}</h1>
-<p class="sub">{E(l["blurb"])}</p>
+<p class="sub">Guided fishing for {E(sp_short(l))} in {E(l["where"])}.</p>
 <a class="btn" href="{book}"><span>Book a trip at {E(l["name"])}</span><i>&rarr;</i></a>
 </div></section>
 <section><div class="wrap two">
 <div><h2>Fishing at {E(l["name"])}</h2>
 <p>{E(l["blurb"])}</p>
-<p>Henrie Outfitters LLC is owned and guided by James Henrie, a local expert in fishing and hunting with 25 years of outdoor experience. Trips suit beginners, families and experienced anglers, and customized trip packages are available.</p>
-<p>Trip length, start times and pricing at {E(l["name"])} are set when you book. Call <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a> or email <a href="mailto:{EMAIL}">{EMAIL}</a>.</p></div>
+{details_html}
+<p class="guide">Guided by James Henrie, owner of Henrie Outfitters LLC. Call <a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a> or email <a href="mailto:{EMAIL}">{EMAIL}</a> to plan a trip.</p></div>
 <div><h2>What you can catch</h2><ul class="fish">{fish}</ul>
 <p class="note">{E(l["access"])}</p></div>
 </div></section>
