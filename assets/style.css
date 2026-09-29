@@ -41,11 +41,12 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.8rem,4vw,2.5rem);c
 .card h3{font-family:var(--serif);font-size:1.4rem;color:var(--forest);margin:0 0 10px}
 .alt .card{border:0}
 cite{display:block;margin-top:14px;color:var(--muted);font-style:normal;font-size:.9rem}
-.gallery{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:240px 240px;gap:14px}
+.gallery{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:200px 200px 200px;gap:14px}
 .photo{margin:0;position:relative;background-size:cover;background-position:center;min-height:200px}
 .photo figcaption{position:absolute;left:14px;bottom:12px;color:#fff;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6)}
-.p1{grid-row:span 2;background-image:url(lake-1.jpg),linear-gradient(180deg,#7d8fa8,#d9a374 55%,#2d5560 56%,#1e3a40)}
+.p1{grid-row:span 3;background-image:url(lake-1.jpg),linear-gradient(180deg,#7d8fa8,#d9a374 55%,#2d5560 56%,#1e3a40)}
 .p2{background-image:url(lake-2.jpg),linear-gradient(160deg,#3d6b78,#1e3a40)}
+.p4{background-image:url(lake-4.jpg),linear-gradient(160deg,#2d5a8a,#1e3a40)}
 .p3{background-image:url(lake-3.jpg),linear-gradient(160deg,#5a6b45,#2b3a2f)}
 .split{display:grid;grid-template-columns:.8fr 1.4fr 1fr;gap:56px;align-items:center}
 .split h2{text-align:left}
@@ -76,3 +77,4 @@ form .cta{justify-self:start}
 .tag{font-family:var(--serif);font-style:italic;color:var(--forest)}
 @media(max-width:820px){.split{grid-template-columns:1fr}.portrait{max-width:320px}}
 .banner{display:block;width:100%;max-width:520px;height:auto;margin:0 auto 24px;border:1px solid #e3dfd0}
+@media(max-width:820px){.p1{grid-row:auto}}
