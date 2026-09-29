@@ -186,6 +186,9 @@ textarea{min-height:130px;resize:vertical}
 form .btn{width:100%}
 form .btn span{flex:1;justify-content:center}
 .note{font-size:.85rem;color:var(--muted);margin-top:14px}
+.note.ok{color:#2f5d2f;font-weight:600}
+.note.err{color:#8a2b1c;font-weight:600}
+.note a{text-decoration:underline}
 
 /* footer */
 footer{background:var(--black);color:#b9b6a6;padding:80px 0 34px;font-size:.95rem}
@@ -390,6 +393,7 @@ footer a:hover{color:#fff}
     </div>
   </div>
   <form class="reveal" id="inquiry">
+    <div style="position:absolute;left:-9999px" aria-hidden="true"><label for="company">Company</label><input id="company" name="company" tabindex="-1" autocomplete="off"></div>
     <label for="name">Name</label>
     <input id="name" name="name" required autocomplete="name">
     <label for="email">Email</label>
@@ -407,7 +411,7 @@ footer a:hover{color:#fff}
     <label for="msg">Message</label>
     <textarea id="msg" name="message" placeholder="Dates, group size, anything we should know"></textarea>
     <button class="btn solid" type="submit"><span>Send inquiry</span><i>&rarr;</i></button>
-    <p class="note">This opens your email app with your inquiry ready to send.</p>
+    <p class="note" id="form-msg" role="status" aria-live="polite" hidden></p>
   </form>
 </div></section>
 
@@ -439,10 +443,22 @@ document.getElementById('lk-prev').addEventListener('click',function(){lkStep(-1
 document.getElementById('lk-next').addEventListener('click',function(){lkStep(1)});
 document.getElementById('inquiry').addEventListener('submit',function(e){
   e.preventDefault();
-  var f=e.target;
-  var body='Name: '+f.name.value+'\nEmail: '+f.email.value+'\nTrip type: '+f.trip.value+'\nLake: '+f.lake.value+'\n\n'+f.message.value;
-  location.href='mailto:henrieoutfitters@gmail.com?subject='+encodeURIComponent('Trip inquiry: '+f.trip.value)+'&body='+encodeURIComponent(body);
+  var f=e.target, btn=f.querySelector('button[type=submit]'), msg=document.getElementById('form-msg');
+  if(f.company&&f.company.value){return}
+  var mailto='mailto:henrieoutfitters@gmail.com?subject='+encodeURIComponent('Trip inquiry: '+f.trip.value)+'&body='+encodeURIComponent('Name: '+f.name.value+'\nEmail: '+f.email.value+'\nTrip type: '+f.trip.value+'\nLake: '+f.lake.value+'\n\n'+f.message.value);
+  btn.disabled=true; msg.hidden=false; msg.className='note'; msg.textContent='Sending...';
+  fetch('https://formsubmit.co/ajax/henrieoutfitters@gmail.com',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({name:f.name.value,email:f.email.value,trip_type:f.trip.value,lake:f.lake.value,message:f.message.value,_subject:'Trip inquiry: '+f.trip.value+' - '+f.lake.value,_template:'table',_replyto:f.email.value})
+  }).then(function(r){return r.json().then(function(d){return {ok:r.ok&&String(d.success)!=='false',d:d}})}).then(function(x){
+    if(!x.ok)throw new Error('failed');
+    f.reset(); msg.className='note ok'; msg.textContent='Thanks. Your inquiry was sent and we will be in touch soon. You can also call (435) 592 0680.';
+  }).catch(function(){
+    msg.className='note err'; msg.innerHTML='Sorry, that did not send. Please call <a href="tel:+14355920680">(435) 592 0680</a> or <a href="'+mailto+'">email us instead</a>.';
+  }).then(function(){btn.disabled=false});
 });
+
 </script>
 </body>
 </html>
