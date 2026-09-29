@@ -447,16 +447,29 @@ document.getElementById('inquiry').addEventListener('submit',function(e){
   if(f.company&&f.company.value){return}
   var mailto='mailto:henrieoutfitters@gmail.com?subject='+encodeURIComponent('Trip inquiry: '+f.trip.value)+'&body='+encodeURIComponent('Name: '+f.name.value+'\nEmail: '+f.email.value+'\nTrip type: '+f.trip.value+'\nLake: '+f.lake.value+'\n\n'+f.message.value);
   btn.disabled=true; msg.hidden=false; msg.className='note'; msg.textContent='Sending...';
+  var data={name:f.name.value,email:f.email.value,trip_type:f.trip.value,lake:f.lake.value,message:f.message.value,_subject:'Trip inquiry: '+f.trip.value+' - '+f.lake.value,_template:'table',_replyto:f.email.value};
+  function done(){f.reset(); msg.className='note ok'; msg.textContent='Thanks. Your inquiry was sent and we will be in touch soon. You can also call (435) 592 0680.'}
+  function fail(){msg.className='note err'; msg.innerHTML='Sorry, that did not send. Please call <a href="tel:+14355920680">(435) 592 0680</a> or <a href="'+mailto+'">email us instead</a>.'}
+  function viaForm(){
+    // Fallback: a normal form post into a hidden frame (no cross-site restrictions on fetch)
+    var fr=document.createElement('iframe'); fr.name='fs-frame'; fr.style.display='none'; document.body.appendChild(fr);
+    var h=document.createElement('form'); h.method='POST'; h.action='https://formsubmit.co/henrieoutfitters@gmail.com'; h.target='fs-frame'; h.style.display='none';
+    Object.keys(data).forEach(function(k){var i=document.createElement('input'); i.type='hidden'; i.name=k; i.value=data[k]; h.appendChild(i)});
+    var c=document.createElement('input'); c.type='hidden'; c.name='_captcha'; c.value='false'; h.appendChild(c);
+    document.body.appendChild(h); h.submit();
+    setTimeout(function(){done(); btn.disabled=false; h.remove()},1500);
+  }
   fetch('https://formsubmit.co/ajax/henrieoutfitters@gmail.com',{
     method:'POST',
     headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({name:f.name.value,email:f.email.value,trip_type:f.trip.value,lake:f.lake.value,message:f.message.value,_subject:'Trip inquiry: '+f.trip.value+' - '+f.lake.value,_template:'table',_replyto:f.email.value})
+    body:JSON.stringify(data)
   }).then(function(r){return r.json().then(function(d){return {ok:r.ok&&String(d.success)!=='false',d:d}})}).then(function(x){
-    if(!x.ok)throw new Error('failed');
-    f.reset(); msg.className='note ok'; msg.textContent='Thanks. Your inquiry was sent and we will be in touch soon. You can also call (435) 592 0680.';
-  }).catch(function(){
-    msg.className='note err'; msg.innerHTML='Sorry, that did not send. Please call <a href="tel:+14355920680">(435) 592 0680</a> or <a href="'+mailto+'">email us instead</a>.';
-  }).then(function(){btn.disabled=false});
+    if(!x.ok){console.warn('Formsubmit:',x.d); throw new Error('rejected')}
+    done(); btn.disabled=false;
+  }).catch(function(err){
+    if(err&&err.message==='rejected'){fail(); btn.disabled=false; return}
+    viaForm();
+  });
 });
 
 </script>
