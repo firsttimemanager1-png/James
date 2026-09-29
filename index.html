@@ -120,7 +120,7 @@ header.nav{position:sticky;top:0;z-index:80;background:var(--offwhite);border-bo
 .arrows button{width:52px;height:46px;border:0;background:#fff;color:var(--black);font-size:1.1rem;cursor:pointer;font-family:var(--label)}
 .arrows button+button{border-left:1px solid var(--black)}
 .arrows button:hover{background:var(--olive);color:#fff}
-.lakelist{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-bottom:48px;padding-bottom:6px}
+.lakelist{display:flex;align-items:flex-start;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-bottom:48px;padding-bottom:6px}
 .lakelist::-webkit-scrollbar{display:none}
 .lakeitem{flex:0 0 min(380px,82%);scroll-snap-align:start;display:flex;flex-direction:column;padding:24px 22px 26px;background:#fff;border:1px solid var(--black)}
 .lakeitem .num{display:block;margin-bottom:14px}
@@ -133,7 +133,7 @@ header.nav{position:sticky;top:0;z-index:80;background:var(--offwhite);border-bo
 .lakeitem h3{font-size:clamp(1.9rem,3vw,2.5rem);margin-bottom:10px}
 .lakeitem p{margin-bottom:14px;max-width:46ch}
 .fish{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
-.lakeitem .btn{margin-top:auto;align-self:flex-start}
+.lakeitem .btn{align-self:flex-start}
 .fish li{font-family:var(--label);font-weight:600;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--black);color:var(--black);padding:5px 10px;background:#fff}
 /* guide */
 .guidesec{background:var(--warm)}
