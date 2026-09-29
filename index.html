@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>James — Professional Services</title>
-  <meta name="description" content="James helps businesses get results with reliable, friendly, professional service.">
+  <title>Henrie Outfitters — Fishing &amp; Hunting Guide</title>
+  <meta name="description" content="Henrie Outfitters: guided fishing and hunting trips led by owner and local expert James Henrie.">
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container nav">
-      <a class="logo" href="#top">James</a>
+      <a class="logo" href="#top">Henrie Outfitters</a>
       <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
       <nav id="nav">
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#testimonials">Testimonials</a>
-        <a class="btn btn-small" href="#contact">Get in touch</a>
+        <a href="#trips">Trips</a>
+        <a href="#about">Your Guide</a>
+        <a href="#reviews">Reviews</a>
+        <a class="btn btn-small" href="#contact">Book a trip</a>
       </nav>
     </div>
   </header>
@@ -24,22 +24,23 @@
   <main id="top">
     <section class="hero">
       <div class="container">
-        <h1>Reliable service, <span>real results.</span></h1>
-        <p class="lead">We help businesses solve problems quickly and confidently, with clear communication at every step.</p>
+        <p class="eyebrow">Owner / Guide · Local Expert</p>
+        <h1>Fishing &amp; hunting, <span>guided by a local.</span></h1>
+        <p class="lead">Henrie Outfitters puts you on the water and in the field with someone who knows the country. Book your next trip with James Henrie.</p>
         <div class="cta">
-          <a class="btn" href="#contact">Request a quote</a>
-          <a class="btn btn-ghost" href="#services">See services</a>
+          <a class="btn" href="#contact">Book a trip</a>
+          <a class="btn btn-ghost" href="#trips">See our trips</a>
         </div>
       </div>
     </section>
 
-    <section id="services" class="section">
+    <section id="trips" class="section">
       <div class="container">
-        <h2>What we do</h2>
+        <h2>Our trips</h2>
         <div class="grid">
-          <article class="card"><h3>Consulting</h3><p>Practical advice tailored to your goals and budget.</p></article>
-          <article class="card"><h3>Implementation</h3><p>Hands-on delivery from kickoff through launch.</p></article>
-          <article class="card"><h3>Support</h3><p>Ongoing help so things keep running smoothly.</p></article>
+          <article class="card"><h3>🎣 Guided Fishing</h3><p>Time on the water with a guide who knows where the fish are. Beginners and experienced anglers welcome.</p></article>
+          <article class="card"><h3>🦌 Guided Hunting</h3><p>Scouted areas, local know-how and honest advice to give you your best shot at a successful hunt.</p></article>
+          <article class="card"><h3>🧭 Custom Trips</h3><p>Family outings, group trips or something specific in mind? Tell us and we'll build it around you.</p></article>
         </div>
       </div>
     </section>
@@ -47,33 +48,39 @@
     <section id="about" class="section alt">
       <div class="container split">
         <div>
-          <h2>About us</h2>
-          <p>We're a small, dedicated team that values honesty, quality and long-term relationships. Replace this text with your story.</p>
+          <h2>Meet your guide</h2>
+          <p>James Henrie is the owner and guide behind Henrie Outfitters. A local expert in fishing and hunting, James is committed to safe, fair-chase, memorable trips.</p>
+          <p><em>Add your story, experience and licences here.</em></p>
         </div>
         <ul class="stats">
-          <li><strong>10+</strong> years experience</li>
-          <li><strong>200+</strong> happy clients</li>
-          <li><strong>24h</strong> response time</li>
+          <li><strong>Fishing</strong> guided trips</li>
+          <li><strong>Hunting</strong> guided trips</li>
+          <li><strong>Local</strong> expert knowledge</li>
         </ul>
       </div>
     </section>
 
-    <section id="testimonials" class="section">
+    <section id="reviews" class="section">
       <div class="container">
-        <h2>What clients say</h2>
+        <h2>From our clients</h2>
         <div class="grid">
-          <blockquote class="card">“Professional, fast and easy to work with.”<cite>— Client A</cite></blockquote>
-          <blockquote class="card">“Exactly what we needed, delivered on time.”<cite>— Client B</cite></blockquote>
+          <blockquote class="card">“Add a real client review here.”<cite>— Client name</cite></blockquote>
+          <blockquote class="card">“Add another review here.”<cite>— Client name</cite></blockquote>
         </div>
+        <p class="follow">Follow along on <a href="https://www.instagram.com/henrieoutfitters/" rel="noopener">Instagram @henrieoutfitters</a></p>
       </div>
     </section>
 
     <section id="contact" class="section alt">
       <div class="container narrow">
-        <h2>Get in touch</h2>
-        <form id="contact-form" action="mailto:you@example.com" method="post" enctype="text/plain">
+        <h2>Book / contact</h2>
+        <p>Email <a href="mailto:henrieoutfitters@gmail.com">henrieoutfitters@gmail.com</a> or use the form below.</p>
+        <form id="contact-form" action="mailto:henrieoutfitters@gmail.com" method="post" enctype="text/plain">
           <label>Name <input name="name" required></label>
           <label>Email <input type="email" name="email" required></label>
+          <label>Trip type
+            <select name="trip"><option>Fishing</option><option>Hunting</option><option>Custom / other</option></select>
+          </label>
           <label>Message <textarea name="message" rows="5" required></textarea></label>
           <button class="btn" type="submit">Send message</button>
         </form>
@@ -82,7 +89,7 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">© <span id="year"></span> James. All rights reserved.</div>
+    <div class="container">© <span id="year"></span> Henrie Outfitters. <a href="https://www.instagram.com/henrieoutfitters/" rel="noopener">Instagram</a></div>
   </footer>
   <script src="assets/script.js"></script>
 </body>
