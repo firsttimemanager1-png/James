@@ -398,6 +398,8 @@ footer a:hover{color:#fff}
     <input id="name" name="name" required autocomplete="name">
     <label for="email">Email</label>
     <input id="email" name="email" type="email" required autocomplete="email">
+    <label for="phone">Phone</label>
+    <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Best number to reach you">
     <label for="trip">Trip type</label>
     <select id="trip" name="trip">
       <option>Fishing</option>
@@ -445,9 +447,9 @@ document.getElementById('inquiry').addEventListener('submit',function(e){
   e.preventDefault();
   var f=e.target, btn=f.querySelector('button[type=submit]'), msg=document.getElementById('form-msg');
   if(f.company&&f.company.value){return}
-  var mailto='mailto:henrieoutfitters@gmail.com?subject='+encodeURIComponent('Trip inquiry: '+f.trip.value)+'&body='+encodeURIComponent('Name: '+f.name.value+'\nEmail: '+f.email.value+'\nTrip type: '+f.trip.value+'\nLake: '+f.lake.value+'\n\n'+f.message.value);
+  var mailto='mailto:henrieoutfitters@gmail.com?subject='+encodeURIComponent('Trip inquiry: '+f.trip.value)+'&body='+encodeURIComponent('Name: '+f.name.value+'\nEmail: '+f.email.value+'\nPhone: '+f.phone.value+'\nTrip type: '+f.trip.value+'\nLake: '+f.lake.value+'\n\n'+f.message.value);
   btn.disabled=true; msg.hidden=false; msg.className='note'; msg.textContent='Sending...';
-  var data={name:f.name.value,email:f.email.value,trip_type:f.trip.value,lake:f.lake.value,message:f.message.value,_subject:'Trip inquiry: '+f.trip.value+' - '+f.lake.value,_template:'table',_replyto:f.email.value};
+  var data={name:f.name.value,email:f.email.value,phone:f.phone.value,trip_type:f.trip.value,lake:f.lake.value,message:f.message.value,_subject:'Trip inquiry: '+f.trip.value+' - '+f.lake.value,_template:'table',_replyto:f.email.value};
   function done(){f.reset(); msg.className='note ok'; msg.textContent='Thanks. Your inquiry was sent and we will be in touch soon. You can also call (435) 592 0680.'}
   function fail(){msg.className='note err'; msg.innerHTML='Sorry, that did not send. Please call <a href="tel:+14355920680">(435) 592 0680</a> or <a href="'+mailto+'">email us instead</a>.'}
   function viaForm(){
