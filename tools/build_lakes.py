@@ -195,7 +195,7 @@ def photos_page():
     title = "Photos: Guided Fishing Trips in Southern Utah | Henrie Outfitters"
     desc = "Photos from guided fishing trips with Henrie Outfitters in Southern Utah: tiger trout, rainbow trout and days on the water."
     items = "".join(
-        f'<figure><a href="assets/photos/{p["file"]}.jpg"><img src="assets/photos/{p["file"]}-sm.jpg" alt="{E(p["alt"])}" width="640" height="850" loading="lazy"></a><figcaption>{E(p["caption"])}</figcaption></figure>'
+        f'<figure><a href="assets/photos/{p["file"]}.jpg"><img src="assets/photos/{p["file"]}-sm.jpg" alt="{E(p["alt"])}" width="640" height="850" loading="lazy"></a></figure>'
         for p in PHOTOS)
     dd_items = "".join(f'<a href="lakes/{o["slug"]}.html">{E(o["name"])}</a>' for o in LAKES)
     graph = [
