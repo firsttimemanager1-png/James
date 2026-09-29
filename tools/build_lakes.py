@@ -133,7 +133,7 @@ def lake_page(l):
 <meta property="og:url" content="{url}">
 <meta property="og:image" content="{BASE}assets/hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="../assets/logo.png">
+<link rel="icon" href="../assets/logo-96.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
@@ -141,7 +141,7 @@ def lake_page(l):
 {"".join(jl(g) for g in graph)}
 </head>
 <body>
-<header class="nav"><a class="brand" href="../"><img src="../assets/logo.png" alt="Henrie Outfitters LLC logo" width="44" height="44">Henrie Outfitters</a>
+<header class="nav"><a class="brand" href="../"><img src="../assets/logo-96.webp" alt="Henrie Outfitters LLC logo" width="44" height="44">Henrie Outfitters</a>
 <nav><div class="dd"><a class="ddlink" href="../#lakes">Lakes</a><button class="ddbtn" type="button" aria-label="Show all lakes" aria-expanded="false">&#9662;</button><div class="ddmenu"><a href="../#lakes">All lakes</a>{dd_items}</div></div><a href="tel:{PHONE_TEL}">Call {PHONE_DISPLAY}</a><a class="book" href="{book}">Book now &rarr;</a></nav></header>
 <main>
 <section class="hero{' photo' if l['slug']=='panguitch-lake' else ''}"><div class="wrap">
@@ -221,7 +221,7 @@ def photos_page():
 <meta property="og:url" content="{url}">
 <meta property="og:image" content="{BASE}assets/photos/{PHOTOS[0]["file"]}.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="assets/logo.png">
+<link rel="icon" href="assets/logo-96.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
@@ -229,7 +229,7 @@ def photos_page():
 {"".join(jl(g) for g in graph)}
 </head>
 <body>
-<header class="nav"><a class="brand" href="./"><img src="assets/logo.png" alt="Henrie Outfitters LLC logo" width="44" height="44">Henrie Outfitters</a>
+<header class="nav"><a class="brand" href="./"><img src="assets/logo-96.webp" alt="Henrie Outfitters LLC logo" width="44" height="44">Henrie Outfitters</a>
 <nav><div class="dd"><a class="ddlink" href="./#lakes">Lakes</a><button class="ddbtn" type="button" aria-label="Show all lakes" aria-expanded="false">&#9662;</button><div class="ddmenu"><a href="./#lakes">All lakes</a>{dd_items}</div></div><a href="tel:{PHONE_TEL}">Call {PHONE_DISPLAY}</a><a class="book" href="./#contact">Book now &rarr;</a></nav></header>
 <main>
 <section class="hero"><div class="wrap">
