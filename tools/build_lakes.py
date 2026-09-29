@@ -100,6 +100,8 @@ def lake_page(l):
     title = f"Guided Fishing Trips at {l['name']}, Utah | Henrie Outfitters"
     desc = f"{l['hook']} Guided fishing trips at {l['name']} with Henrie Outfitters. Call {PHONE_DISPLAY}."
     qa = faq(l)
+    cur = ' aria-current="page"'
+    dd_items = "".join(f'<a href="{o["slug"]}.html"{cur if o["slug"] == l["slug"] else ""}>{E(o["name"])}</a>' for o in LAKES)
     others = "".join(f'<li><a href="{o["slug"]}.html">{E(o["name"])}</a></li>' for o in LAKES if o["slug"] != l["slug"])
     fish = "".join(f"<li>{E(s)}</li>" for s in l["species"])
     faq_html = "".join(f"<details open><summary>{E(q)}</summary><p>{E(a)}</p></details>" for q, a in qa)
@@ -140,7 +142,7 @@ def lake_page(l):
 </head>
 <body>
 <header class="nav"><a class="brand" href="../"><img src="../assets/logo.png" alt="Henrie Outfitters LLC logo" width="44" height="44">Henrie Outfitters</a>
-<nav><a href="../#lakes">All lakes</a><a href="tel:{PHONE_TEL}">Call {PHONE_DISPLAY}</a><a class="book" href="{book}">Book now &rarr;</a></nav></header>
+<nav><div class="dd"><a class="ddlink" href="../#lakes">Lakes</a><button class="ddbtn" type="button" aria-label="Show all lakes" aria-expanded="false">&#9662;</button><div class="ddmenu"><a href="../#lakes">All lakes</a>{dd_items}</div></div><a href="tel:{PHONE_TEL}">Call {PHONE_DISPLAY}</a><a class="book" href="{book}">Book now &rarr;</a></nav></header>
 <main>
 <section class="hero{' photo' if l['slug']=='panguitch-lake' else ''}"><div class="wrap">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Home</a> / <a href="../#lakes">Fishing lakes</a> / <span>{E(l["name"])}</span></nav>
@@ -164,9 +166,16 @@ def lake_page(l):
 </main>
 <footer><div class="wrap"><p><strong>Henrie Outfitters LLC</strong> &middot; Guided fishing and hunting in Southern Utah with James Henrie</p>
 <p><a href="tel:{PHONE_TEL}">{PHONE_DISPLAY}</a> &middot; <a href="mailto:{EMAIL}">{EMAIL}</a> &middot; <a href="{INSTAGRAM}">Instagram</a></p></div></footer>
+<script>document.querySelector(".ddbtn").addEventListener("click",function(){{var d=this.parentNode,o=d.classList.toggle("open");this.setAttribute("aria-expanded",o)}});document.addEventListener("click",function(e){{var d=document.querySelector(".dd");if(d&&!d.contains(e.target)){{d.classList.remove("open")}}}});</script>
 </body>
 </html>
 '''
+
+def dd_index():
+    items = "".join(f'<a href="lakes/{l["slug"]}.html">{E(l["name"])}</a>' for l in LAKES)
+    return ('<div class="dd"><a class="ddlink" href="#lakes">Lakes</a>'
+            '<button class="ddbtn" type="button" aria-label="Show all lakes" aria-expanded="false">&#9662;</button>'
+            f'<div class="ddmenu"><a href="#lakes">All lakes</a>{items}</div></div>')
 
 def cards_html():
     out = []
@@ -182,11 +191,12 @@ def cards_html():
 def patch_index():
     p = ROOT / "index.html"
     s = p.read_text(encoding="utf-8")
-    a, z = "<!-- LAKES:START -->", "<!-- LAKES:END -->"
-    if a in s:
-        head, rest = s.split(a, 1); _, tail = rest.split(z, 1)
-        s = head + a + "\n" + cards_html() + "  " + z + tail
-        p.write_text(s, encoding="utf-8")
+    for a, z, body in (("<!-- LAKES:START -->", "<!-- LAKES:END -->", "\n" + cards_html() + "  "),
+                       ("<!-- LAKENAV:START -->", "<!-- LAKENAV:END -->", dd_index())):
+        if a in s:
+            head, rest = s.split(a, 1); _, tail = rest.split(z, 1)
+            s = head + a + body + z + tail
+    p.write_text(s, encoding="utf-8")
 
 def main():
     out = ROOT / "lakes"; out.mkdir(exist_ok=True)

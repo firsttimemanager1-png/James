@@ -22,7 +22,7 @@
 </head>
 <body>
 <header class="nav"><a class="brand" href="../"><img src="../assets/logo.png" alt="Henrie Outfitters LLC logo" width="44" height="44">Henrie Outfitters</a>
-<nav><a href="../#lakes">All lakes</a><a href="tel:+14355920680">Call (435) 592-0680</a><a class="book" href="https://firsttimemanager1-png.github.io/James/?lake=Quail%20Creek%20Reservoir#contact">Book now &rarr;</a></nav></header>
+<nav><div class="dd"><a class="ddlink" href="../#lakes">Lakes</a><button class="ddbtn" type="button" aria-label="Show all lakes" aria-expanded="false">&#9662;</button><div class="ddmenu"><a href="../#lakes">All lakes</a><a href="sand-hollow-reservoir.html">Sand Hollow Reservoir</a><a href="lake-powell.html">Lake Powell</a><a href="navajo-lake.html">Navajo Lake</a><a href="panguitch-lake.html">Panguitch Lake</a><a href="gunlock-reservoir.html">Gunlock Reservoir</a><a href="quail-creek-reservoir.html" aria-current="page">Quail Creek Reservoir</a><a href="fish-lake.html">Fish Lake</a></div></div><a href="tel:+14355920680">Call (435) 592-0680</a><a class="book" href="https://firsttimemanager1-png.github.io/James/?lake=Quail%20Creek%20Reservoir#contact">Book now &rarr;</a></nav></header>
 <main>
 <section class="hero"><div class="wrap">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Home</a> / <a href="../#lakes">Fishing lakes</a> / <span>Quail Creek Reservoir</span></nav>
@@ -46,5 +46,6 @@
 </main>
 <footer><div class="wrap"><p><strong>Henrie Outfitters LLC</strong> &middot; Guided fishing and hunting in Southern Utah with James Henrie</p>
 <p><a href="tel:+14355920680">(435) 592-0680</a> &middot; <a href="mailto:henrieoutfitters@gmail.com">henrieoutfitters@gmail.com</a> &middot; <a href="https://www.instagram.com/henrieoutfitters/">Instagram</a></p></div></footer>
+<script>document.querySelector(".ddbtn").addEventListener("click",function(){var d=this.parentNode,o=d.classList.toggle("open");this.setAttribute("aria-expanded",o)});document.addEventListener("click",function(e){var d=document.querySelector(".dd");if(d&&!d.contains(e.target)){d.classList.remove("open")}});</script>
 </body>
 </html>
