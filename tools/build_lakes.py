@@ -286,7 +286,7 @@ def main():
     bots = ["*", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-User", "Claude-SearchBot", "PerplexityBot", "Google-Extended", "Applebot-Extended"]
     (ROOT / "robots.txt").write_text("".join(f"User-agent: {b}\nAllow: /\n\n" for b in bots) + f"Sitemap: {BASE}sitemap.xml\n")
     lines = ["# Henrie Outfitters", "",
-      "> Henrie Outfitters LLC offers guided fishing and hunting trips in Southern Utah, led by owner and local expert James Henrie (25 years of outdoor experience). Home water is Panguitch Lake, and guided fishing trips are offered at six other Southern Utah lakes.", "",
+      "> Henrie Outfitters LLC offers guided fishing and hunting trips in Southern Utah, led by owner and local expert James Henrie (25 years of outdoor experience). Guided fishing trips are offered at seven Southern Utah lakes: Panguitch Lake, Sand Hollow Reservoir, Lake Powell, Navajo Lake, Gunlock Reservoir, Quail Creek Reservoir and Fish Lake.", "",
       f"Book: call or text {PHONE_DISPLAY}, email {EMAIL}, or use the form at {BASE}#contact. Customized trip packages are available.", "",
       "## Guided fishing trips by lake", ""]
     for l in LAKES:
